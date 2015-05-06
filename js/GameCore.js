@@ -45,7 +45,7 @@ function GameCore() {
         //init sound
         AudioManager.Init();
         //init topbar
-        TopBar.Init();
+        //TopBar.Init();
 	}
 	
 	//render
@@ -178,7 +178,7 @@ function GameCore() {
             background = new Object();
             background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bg.jpg");
             background.SetPos(-3, 0);
-            background.SetScale(2, 2);
+            //background.SetScale(2, 2);
         }
         
         if(!REMOVE_GLOW_EFFECT)

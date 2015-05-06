@@ -11,6 +11,8 @@ function TopBar()
 	
 	this.Init = function() {
 	
+		//m4verick - remove close button in PC game
+		/*
 		m_button = new Object();
 		m_button.Load(TOPBAR_CLOSE_BTN_LINK + HostImagePath() + "/topBar/close_button.png");
 		m_button.SetPos(Graphic.width + ScreenDefine.TOP_BAR.BUTTON.POSX_PRELOAD, Graphic.height + ScreenDefine.TOP_BAR.BUTTON.POSY_PRELOAD);
@@ -20,7 +22,7 @@ function TopBar()
 		//get size
 		this.width = ScreenDefine.TOP_BAR.WIDTH;
 		this.height = ScreenDefine.TOP_BAR.HEIGHT;
-		
+		*/
 		Utility.log("Top bar size ("+ this.width +", "+this.height+")");
 	};
     

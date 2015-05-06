@@ -60,7 +60,7 @@ function DJ_Table()
 		}
 		
 		dg_bg = new Object();
-		dg_bg.Load(DJ_BG_LINK + HostImagePath() + "/bg/dj_bg.jpg");
+		dg_bg.Load(DJ_BG_LINK + HostImagePath() + "/bg/dj_bg.png");
         dg_bg.SetPos(Graphic.width >> 1, ScreenDefine.DJ_TABLE.BACKGROUND.POSY);
 		dg_bg.SetAnchor(H_CENTER|V_CENTER);
 		

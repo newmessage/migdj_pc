@@ -50,7 +50,7 @@ function StateEndGame()
 		currency_icon.SetAnchor(V_CENTER);
 		currency_icon.SetScale(2, 2);
         
-        TopBar.SetPosEndState();
+        //TopBar.SetPosEndState();
 		
 		m_bGotReward = false;
 	};
@@ -93,7 +93,7 @@ function StateEndGame()
             }
 		}
 		
-        TopBar.Update();
+        //TopBar.Update();
 	};
 	
 	this.End_Draw = function() {
@@ -121,6 +121,8 @@ function StateEndGame()
 			Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_2, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT_SMALL, V_CENTER);
 		}
 		
+		//m4verick - Remove reward in game
+		/*
 		if (creative_type_id == 27 || creative_type_id == '27')
 		{
             if(!m_bGotReward)
@@ -132,7 +134,8 @@ function StateEndGame()
                 //currency_icon.Draw();
             }
         }
-        TopBar.Draw();
+		*/
+        //TopBar.Draw();
 	};
 }
 var StateEndGame = new StateEndGame();

@@ -93,7 +93,7 @@ function Graphic() {
         }
         else
         {
-            isPortrait = size.width < size.height;
+            isPortrait = size.height < size.width;
         }
         
         realWidth = size.width;

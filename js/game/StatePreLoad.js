@@ -15,19 +15,21 @@ function StatePreLoad()
 		splash.Load(SPLASH_LINK + HostImagePath() + "/bg/splash_bg.jpg");
         splash.SetPos(Graphic.width >> 1, Graphic.height >> 1);
 		splash.SetAnchor(H_CENTER|V_CENTER);
-		splash.SetRotate(90);
+		splash.SetScale(1.5,1.5);
+		
+		//splash.SetRotate(90); //realign in splash menu
 		
 		splash_button = new Object();
 		splash_button.Load(SPLASH_BTN_LINK + HostImagePath() + "/bg/splash_btn_"+ GAME_COUNTRY.language +".jpg");
         splash_button.SetPos(Graphic.width >> 1, Graphic.height >> 1);
 		splash_button.SetAnchor(H_CENTER|V_CENTER);
 		splash_button.SetPos(ScreenDefine.SPLASH.BUTTON_OFFSET_X, (Graphic.height >> 1) + ScreenDefine.SPLASH.BUTTON_OFFSET_Y);
-		splash_button.SetRotate(90);
+		//splash_button.SetRotate(90);
 		
 		currency_icon = new Object();
 		currency_icon.Load(CURRENCY_ICO_LINK + HostImagePath() + "/button/currency_icon_large.png");
 		currency_icon.SetAnchor(H_CENTER|V_CENTER);
-		currency_icon.SetRotate(90);
+		//currency_icon.SetRotate(90);
 		currency_icon.SetScale(2, 2);
 	};
     
@@ -55,7 +57,7 @@ function StatePreLoad()
         	//call_client(creative_id, 'GLADS_CLICK_INTERSTITIAL', 'click', 0, area_id, '', link);
             if (!DEBUG)
             {
-                call_client(creative_id, 'GLADS_CLICK_INTERSTITIAL', 'click', 0, 0, '', '');
+               // call_client(creative_id, 'GLADS_CLICK_INTERSTITIAL', 'click', 0, 0, '', '');
             }
 
         	console.log('Click Tracked');
@@ -65,7 +67,7 @@ function StatePreLoad()
             GameCore.ChangeState(GAME_STATE_LOADING);
         }
 
-        TopBar.Update();
+        //TopBar.Update();
 	};
 	
 	this.Draw = function()
@@ -75,6 +77,8 @@ function StatePreLoad()
 		if(splash_button != null)
 			splash_button.Draw();
 
+		//m4verick - Remove reward in game
+		/*
 		if (creative_type_id == 27 || creative_type_id == '27')
 		{
 			if(currency_icon != null)
@@ -87,11 +91,15 @@ function StatePreLoad()
 		}
         else 
         {
-            Graphic.DrawString(GetText().SPLASH_TEXT_PLAY_NO_REWARD, (Graphic.width >> 1) + ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_X, ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, V_CENTER, NONE, true);
-            Graphic.DrawString(GetText().SPLASH_TEXT_GET_NO_REWARD, Graphic.width >> 1, ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_SPLASH, V_CENTER, NONE, true);
+		*/
+		//m4verick - set rotate to false
+            Graphic.DrawString(GetText().SPLASH_TEXT_PLAY_NO_REWARD, (Graphic.width >> 1) + ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_X, ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, V_CENTER, NONE, false);
+            Graphic.DrawString(GetText().SPLASH_TEXT_GET_NO_REWARD, (Graphic.width >> 1) + ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_X_GAME, ScreenDefine.SPLASH.TEXT_PLAY_OFFSET_Y_GAME, "#FFFFFF", ScreenDefine.FONT_SIZE_SPLASH, V_CENTER, NONE, false);
+		/*
         }
+		*/
 
-		TopBar.Draw();
+		//TopBar.Draw();
 	};
 }
 

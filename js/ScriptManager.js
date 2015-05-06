@@ -27,7 +27,7 @@ var MainScriptFile=[
     "js/game/SoundManager.js",
     "js/game/AudioManager.js",
     
-    "js/game/TopBar.js",
+    //"js/game/TopBar.js",
     "js/game/StatePreLoad.js",
     "js/game/StateLoading.js",
     

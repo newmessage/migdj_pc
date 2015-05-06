@@ -16,7 +16,7 @@ a:hover {
 
 @font-face {
   font-family: 'Accidental Presidency';
-  src: url('http://ingameads.gameloft.com/ads/adserver/web/fullscreen/templates/minigame/dj/fonts/accid.ttf');
+  src: url('../fonts/accid.ttf');
 }
 
 #toast {
