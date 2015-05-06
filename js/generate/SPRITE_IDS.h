@@ -1,0 +1,8 @@
+// SPARKLE
+
+#define SPARKLE_FRAME_SPARKLE_1								0
+#define SPARKLE_FRAME_SPARKLE_3								2
+
+#define SPARKLE_ANIM_SPARKLING_ANIM							0
+
+
