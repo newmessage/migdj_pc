@@ -375,13 +375,13 @@ function DJ_Table()
 	this.DrawScore = function() {
         if (USE_TEXT_COLOR)
 		  Graphic.DrawString("" + m_score, Graphic.width + ScreenDefine.DJ_TABLE.SCORE.POSX, ScreenDefine.DJ_TABLE.SCORE.POSY, this.textColor, ScreenDefine.FONT_SIZE_MAX, RIGHT, RIGHT);
-        else Graphic.DrawString("" + m_score, Graphic.width + ScreenDefine.DJ_TABLE.SCORE.POSX, ScreenDefine.DJ_TABLE.SCORE.POSY, "#FFFFFF", ScreenDefine.FONT_SIZE_MAX, RIGHT, RIGHT);
+        else Graphic.DrawString("" + m_score, Graphic.width + ScreenDefine.DJ_TABLE.SCORE.POSX, ScreenDefine.DJ_TABLE.SCORE.POSY, "#FFFFFF", ScreenDefine.FONT_SIZE_MAX, RIGHT, V_CENTER);
 	};
 	
 	this.DrawCombo = function() {
         if (USE_TEXT_COLOR)
             Graphic.DrawString('x'+(MusicNoteManager.GetCombo() - 1), Graphic.width + ScreenDefine.DJ_TABLE.COMBO.POSX, ScreenDefine.DJ_TABLE.COMBO.POSY, this.textColor, ScreenDefine.FONT_SIZE_MAX, RIGHT, RIGHT);
-        else Graphic.DrawString('x'+(MusicNoteManager.GetCombo() - 1), Graphic.width + ScreenDefine.DJ_TABLE.COMBO.POSX, ScreenDefine.DJ_TABLE.COMBO.POSY, "#FFFFFF", ScreenDefine.FONT_SIZE_MAX, RIGHT, RIGHT);
+        else Graphic.DrawString('x'+(MusicNoteManager.GetCombo() - 1), Graphic.width + ScreenDefine.DJ_TABLE.COMBO.POSX, ScreenDefine.DJ_TABLE.COMBO.POSY, "#FFFFFF", ScreenDefine.FONT_SIZE_MAX, RIGHT, V_CENTER);
 	};
 	
 	this.DrawTime = function() {
@@ -392,8 +392,8 @@ function DJ_Table()
         }
         else 
         {
-		Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, LEFT);
-		Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
+		Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
+		Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, V_CENTER);
         }
 	};
 	
