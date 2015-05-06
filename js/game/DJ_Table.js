@@ -174,14 +174,72 @@ function DJ_Table()
         }
 	};
 	
+	//dede
+	this.KeyboardToMouseTranslator = function()
+	{
+		var keyNumber = null
+		
+		if(Input.IsKey1Pressed())
+		{
+			keyNumber = 0;
+		}
+		else if(Input.IsKey2Pressed())
+		{
+			keyNumber = 1;
+		}
+		else if(Input.IsKey3Pressed())
+		{
+			keyNumber = 2;
+		}
+		
+		
+			if(MusicNoteManager.CheckNote(keyNumber))
+			{
+				if(!m_shouldPlayBackGroundSound)
+				{
+					this.PlayPerfectSound();
+				}
+				button[keyNumber].SetMissed(false);
+				MusicNoteManager.PlayButtonEffect(keyNumber);
+
+				m_score = m_score + MusicNoteManager.GetCombo();
+				
+				GameCore.SetLightning(true, MusicNoteManager.GetCombo());
+				
+				Utility.Vibrate();
+			}
+			else 
+			{
+				if(!this.shouldCheckPress)
+				{
+					if(!m_shouldPlayBackGroundSound)
+					{
+						AudioManager.SetVolume(SOUND_BG_MUSIC1, BACKGROUND_MUSIC_VOLUME_NOACTIVE);
+						AudioManager.SetVolume(SOUND_BG_MUSIC2, 1.0);
+					}
+					button[keyNumber].SetMissed(true);
+					
+					MusicNoteManager.PlayMissedEffect(keyNumber);
+					GameCore.SetLightning(false, 0);
+				}
+			}
+		//}
+	}
+	
 	this.shouldCheckPress = false;
     var currentDiskRotate = 0;
     var curerntDiskDY = 0;
 	this.Update = function(time)
 	{
+		//dede
+		if((Input.IsKey1Pressed() || Input.IsKey2Pressed() || Input.IsKey3Pressed()) && !isInTutorial)
+		{
+			this.KeyboardToMouseTranslator();
+		}
+	
 		if(isInTutorial)
 		{
-			if(Input.IsTouchDown())
+			if(Input.IsTouchDown() || Input.IsKeyEnterPressed()) // dede
 			{
 				DJ_Table.Init();
 
@@ -193,19 +251,22 @@ function DJ_Table()
 		}
 		if(this.IsClick())
         {
+			console.log('IsClick');
             currentDiskRotate = this.rotate;
         }
         
 		if(this.IsPress())// && !isDiskRotating)
 		{
-            
+            console.log('IsPress');
             if(Input.IsTouchMove())
             {
+				console.log('IsTouchMove');
                 curerntDiskDY = Input.GetDY();
             }
             this.rotate = currentDiskRotate - curerntDiskDY;
 			if (curerntDiskDY != 0)
 			{
+				console.log('curerntDiskDY != 0');
 				if(MusicNoteManager.CanCheckNote())
 				{
 					//MusicNoteManager.SetCanCheckNote(false);
@@ -387,13 +448,13 @@ function DJ_Table()
 	this.DrawTime = function() {
         if (USE_TEXT_COLOR)
         {
-            Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , this.textColor, ScreenDefine.FONT_SIZE_TIME, RIGHT, LEFT);
-            Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, this.textColor, ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
+            //Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , this.textColor, ScreenDefine.FONT_SIZE_TIME, RIGHT, LEFT);
+            //Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, this.textColor, ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
         }
         else 
         {
-		Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
-		Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, V_CENTER);
+		//Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, LEFT, LEFT);
+		//Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
         }
 	};
 	

@@ -17,6 +17,7 @@ const BLUE_B_VAL = 255;//255;
 function GameCore() {
 	
 	var m_state = GAME_STATE_PRELOAD;
+	var main_background = null;
 	var background = null;
 	var lightning = null;
 	var lightning_red = null;
@@ -176,9 +177,16 @@ function GameCore() {
         if(!USE_OPTMZ_FOR_WEAK_DEVICE)
         {
             background = new Object();
-            background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bg.jpg");
-            background.SetPos(-3, 0);
+            background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bgPlay2.png");
+            background.SetPos(-65, 60);
             //background.SetScale(2, 2);
+			
+			main_background = new Object();
+			main_background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bg_gameplay.jpg");
+			//main_background.SetScale(1.5, 1.5);
+			//main_background.SetPos(Graphic.width>>1, ScreenDefine.TUTORIAL.POSY);
+			main_background.SetPos(Graphic.width>>1, ScreenDefine.TUTORIAL.POSY);
+			main_background.SetAnchor(H_CENTER|V_CENTER);
         }
         
         if(!REMOVE_GLOW_EFFECT)
@@ -233,7 +241,7 @@ function GameCore() {
         
         if(!USE_OPTMZ_FOR_WEAK_DEVICE)
         {
-            result &= background.IsLoaded();
+            result &= (background.IsLoaded() && main_background.IsLoaded());
         }
         if(!REMOVE_GLOW_EFFECT && !USE_TEXT_COLOR)
         {
@@ -246,6 +254,10 @@ function GameCore() {
 	this.DrawBackGround = function() {
         if(!USE_OPTMZ_FOR_WEAK_DEVICE)
         {
+			if(main_background != null)
+			{
+				main_background.Draw();
+			}
             if(background != null)
             {
                 background.Draw();

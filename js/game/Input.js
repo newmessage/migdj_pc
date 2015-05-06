@@ -10,6 +10,11 @@ function Input()
 	const TOUCH_MOVE	=	1<<3;
 	const TOUCH_PRESS	=	1<<4;
 	
+	const KEY_1 	= 49;
+	const KEY_2 	= 50;
+	const KEY_3 	= 51;
+	const KEY_ENTER = 13;
+	
 	var rect = null;
 
 	var state = 0;	
@@ -28,6 +33,8 @@ function Input()
 	var m_scaleX = 1;
 	var m_scaleY = 1;
 	
+	var key = null;
+	
 	this.Init = function()
 	{
 		rect = Graphic.GetCanvas().getBoundingClientRect();
@@ -45,6 +52,8 @@ function Input()
             canvas.addEventListener("touchcancel", PreventDefault, false);
             canvas.addEventListener("touchleave", PreventDefault, false);
 			
+			addEventListener("keypress", setKeyPressed, false);
+						
 			Utility.log("Input init done...");
 			
 			this.m_canvas = canvas;
@@ -53,6 +62,45 @@ function Input()
 		
 		m_isTouchDevice = this.CheckTouchDevice();
 	};
+	
+	function setKeyPressed(e)
+	{
+		key = e.keyCode;
+	}
+	
+	this.getKeyPressed = function()
+	{
+		//console.log('getKeypressed:' + key);
+		var result = null;
+		
+		if(key == KEY_1) 
+		{
+			result = KEY_1;
+			console.log('1 key');
+		}
+		else if(key == KEY_2)
+		{
+			result = KEY_2;
+			console.log('2 key');
+		}
+		else if(key == KEY_3)
+		{
+			result = KEY_3;
+			console.log('3 key');
+		}
+		else if(key == KEY_ENTER)
+		{
+			result = KEY_ENTER;
+			console.log('enter key');
+		}
+		
+		if(result != null)
+		{
+			console.log(result);
+		}
+		
+		return result;
+	}
     
     function PreventDefault(e)
     {
@@ -65,6 +113,7 @@ function Input()
 	this.isTouchDevice = function(){
 	    return m_isTouchDevice;
 	};
+	
 	function OnMouseDown(e)
 	{
 		state = TOUCH_DOWN;
@@ -203,6 +252,12 @@ function Input()
 		
 		if((state & TOUCH_UP) != 0)
 			state = TOUCH_NONE;
+			
+		if(key != null)
+		{
+			console.log('nullified key');
+			key = null;
+		}
 	};
     
     this.Draw = function()
@@ -219,6 +274,22 @@ function Input()
             }
         }
     };
+	
+	this.IsKey1Pressed = function() {
+		return (key == KEY_1?true:false);
+	};
+	
+	this.IsKey2Pressed = function() {
+		return (key == KEY_2?true:false);
+	};
+	
+	this.IsKey3Pressed = function() {
+		return (key == KEY_3?true:false);
+	};
+	
+	this.IsKeyEnterPressed = function() {
+		return (key == KEY_ENTER?true:false);
+	};
 	
 	this.IsTouchDown = function() {
 		return ((state & TOUCH_DOWN) != 0?true:false);

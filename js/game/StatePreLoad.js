@@ -48,7 +48,7 @@ function StatePreLoad()
 	this.Update = function(time)
 	{
         //check when loading screen data is already
-        if(Input.IsTouchUp())
+        if(Input.IsTouchDown() || Input.IsKeyEnterPressed())
         {
         	// area_id = 11699; //(_os=='ANDROID') ? 11699 : 11701;
 
