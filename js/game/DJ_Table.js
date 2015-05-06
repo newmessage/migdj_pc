@@ -448,13 +448,13 @@ function DJ_Table()
 	this.DrawTime = function() {
         if (USE_TEXT_COLOR)
         {
-            //Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , this.textColor, ScreenDefine.FONT_SIZE_TIME, RIGHT, LEFT);
-            //Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, this.textColor, ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
+           // Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , this.textColor, ScreenDefine.FONT_SIZE_TIME, RIGHT, LEFT);
+           // Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, this.textColor, ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
         }
         else 
         {
-		//Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, LEFT, LEFT);
-		//Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
+			Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX + 220, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, LEFT, LEFT);
+			Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX + 350, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
         }
 	};
 	
