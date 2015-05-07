@@ -199,7 +199,7 @@ function GameCore() {
         
         if(!REMOVE_GLOW_EFFECT)
         {
-            var posy = Graphic.RealHeight()- Graphic.GetOffsetRatio();
+            var posx = Graphic.RealHeight();//- Graphic.GetOffsetRatio();
             if(Graphic.IsPortrait())
             {
 				console.log('masuk sini ++++ ');
@@ -220,7 +220,7 @@ function GameCore() {
             {
                 lightning2.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/blue_lightning.png");
             }
-            lightning2.SetPos(- Graphic.GetOffsetRatio(), posy);
+            lightning2.SetPos(- Graphic.GetOffsetRatio(), posx);
             lightning2.alpha = 0;
             lightning2.SetScale(4, -4);
 			
@@ -238,7 +238,7 @@ function GameCore() {
             {
                 lightning4.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/blue_lightning.png");
             }
-            lightning4.SetPos(posy, posy);
+            lightning4.SetPos(posy, posx);
             lightning4.alpha = 0;
             lightning4.SetScale(-4, -4);
 
@@ -256,7 +256,7 @@ function GameCore() {
             {
                 lightning_red2.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/red_lightning.png");
             }
-            lightning_red2.SetPos(- Graphic.GetOffsetRatio(), posy);
+            lightning_red2.SetPos(- Graphic.GetOffsetRatio(), posx);
             lightning_red2.alpha = 0;
             lightning_red2.SetScale(4, -4);
 			
@@ -274,7 +274,7 @@ function GameCore() {
             {
                 lightning_red4.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/red_lightning.png");
             }
-            lightning_red4.SetPos(posy, posy);
+            lightning_red4.SetPos(posy, posx);
             lightning_red4.alpha = 0;
             lightning_red4.SetScale(-4, -4);
         }
