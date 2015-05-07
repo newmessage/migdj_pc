@@ -10,11 +10,6 @@ function Input()
 	const TOUCH_MOVE	=	1<<3;
 	const TOUCH_PRESS	=	1<<4;
 	
-	const KEY_1 	= 49;
-	const KEY_2 	= 50;
-	const KEY_3 	= 51;
-	const KEY_ENTER = 13;
-	
 	var rect = null;
 
 	var state = 0;	
@@ -33,7 +28,13 @@ function Input()
 	var m_scaleX = 1;
 	var m_scaleY = 1;
 	
-	var key = null;
+	///////// dede
+	var isKey1Pressed = false;
+	var isKey2Pressed = false;
+	var isKey3Pressed = false;
+	var isKeyEnterPressed = false;
+
+	var isKeyUp = false;
 	
 	this.Init = function()
 	{
@@ -52,7 +53,8 @@ function Input()
             canvas.addEventListener("touchcancel", PreventDefault, false);
             canvas.addEventListener("touchleave", PreventDefault, false);
 			
-			addEventListener("keypress", setKeyPressed, false);
+			addEventListener("keydown", this.setKeyPressed, false);
+			addEventListener("keyup", this.nullifykey, false);
 						
 			Utility.log("Input init done...");
 			
@@ -62,44 +64,65 @@ function Input()
 		
 		m_isTouchDevice = this.CheckTouchDevice();
 	};
-	
-	function setKeyPressed(e)
+
+	this.IsKeyEnterPressed = function()
+	{
+		return isKeyEnterPressed;
+	}
+
+
+	this.setKeyPressed = function(e)
 	{
 		key = e.keyCode;
+		console.log(key);
+		
+		if(key == 49 || key == 97) // works for numpad too
+		{
+			isKey1Pressed = true;
+		}
+		
+		else if(key == 50 || key == 98)
+		{
+			isKey2Pressed = true;
+		}
+		
+		else if(key == 51 || key == 99)
+		{
+			isKey3Pressed = true;	
+		}
+		
+		else if(key == 13)
+		{
+			//console.log('key enter pressed');
+			isKeyEnterPressed = true;
+		}
+
+		isKeyUp = false;
 	}
 	
-	this.getKeyPressed = function()
+	this.nullifykey = function()
 	{
-		//console.log('getKeypressed:' + key);
-		var result = null;
-		
-		if(key == KEY_1) 
+		if(key == 49 || key == 97)
 		{
-			result = KEY_1;
-			console.log('1 key');
-		}
-		else if(key == KEY_2)
-		{
-			result = KEY_2;
-			console.log('2 key');
-		}
-		else if(key == KEY_3)
-		{
-			result = KEY_3;
-			console.log('3 key');
-		}
-		else if(key == KEY_ENTER)
-		{
-			result = KEY_ENTER;
-			console.log('enter key');
+			isKey1Pressed = false;
 		}
 		
-		if(result != null)
+		if(key == 50 || key == 98)
 		{
-			console.log(result);
+			isKey2Pressed = false;
 		}
 		
-		return result;
+		if(key == 51 || key == 99)
+		{
+			isKey3Pressed = false;	
+		}
+		
+		if(key == 13)
+		{
+			isKeyEnterPressed = false;
+		}
+
+		isKeyUp = true;
 	}
     
     function PreventDefault(e)
@@ -113,7 +136,6 @@ function Input()
 	this.isTouchDevice = function(){
 	    return m_isTouchDevice;
 	};
-	
 	function OnMouseDown(e)
 	{
 		state = TOUCH_DOWN;
@@ -252,12 +274,6 @@ function Input()
 		
 		if((state & TOUCH_UP) != 0)
 			state = TOUCH_NONE;
-			
-		if(key != null)
-		{
-			console.log('nullified key');
-			key = null;
-		}
 	};
     
     this.Draw = function()
@@ -274,25 +290,29 @@ function Input()
             }
         }
     };
+
+    this.isPressedButtonValid = function(index)
+    {
+    	var result = false;
+    	//console.log(index);
+    	index = typeof index !== 'undefined' ? index : null;
+
+    	//if((isKey1Pressed && index==0) || (isKey2Pressed && index==1) || (isKey3Pressed && index==2) || (isKeyEnterPressed && index == null))
+    	if((isKey1Pressed && index==0) || (isKey2Pressed && index==1) || (isKey3Pressed && index==2))
+    	{
+    		if(isKeyEnterPressed)
+    		{
+    			console.log('enter index undefined');
+    		}
+    		result = true;
+    	}
+
+    	return result;
+    }
 	
-	this.IsKey1Pressed = function() {
-		return (key == KEY_1?true:false);
-	};
-	
-	this.IsKey2Pressed = function() {
-		return (key == KEY_2?true:false);
-	};
-	
-	this.IsKey3Pressed = function() {
-		return (key == KEY_3?true:false);
-	};
-	
-	this.IsKeyEnterPressed = function() {
-		return (key == KEY_ENTER?true:false);
-	};
-	
-	this.IsTouchDown = function() {
-		return ((state & TOUCH_DOWN) != 0?true:false);
+	this.IsTouchDown = function(index) {
+		//return ((state & TOUCH_DOWN) != 0?true:false);		
+		return (((state & TOUCH_DOWN) || (this.isPressedButtonValid(index) && !isKeyUp)) != 0?true:false);;
 	};
 	
 	this.IsTouchUp = function() {
@@ -303,12 +323,19 @@ function Input()
 		return ((state & TOUCH_MOVE) != 0?true:false);
 	};
 	
-	this.IsTouchPress = function() {
-		return ((state & TOUCH_PRESS) != 0?true:false);
+	this.IsTouchPress = function(index) {
+		//return ((state & TOUCH_PRESS) != 0?true:false);
+		return (((state & TOUCH_PRESS) || (this.isPressedButtonValid(index) && !isKeyUp)) != 0?true:false);
 	};
 	
 	this.IsTouchInBounce = function(x, y, w, h) {
 		
+		//if(this.isPressedButtonValid() && !isKeyUp)
+		if(isKey1Pressed || isKey2Pressed || isKey3Pressed)
+		{
+			return true;
+		}
+
 		var touchX = m_touchX - Graphic.GetOffsetRatio();// + m_touchDX;
 		var touchY = m_touchY;// + m_touchDY;
 

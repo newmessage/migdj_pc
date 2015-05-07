@@ -174,72 +174,14 @@ function DJ_Table()
         }
 	};
 	
-	//dede
-	this.KeyboardToMouseTranslator = function()
-	{
-		var keyNumber = null
-		
-		if(Input.IsKey1Pressed())
-		{
-			keyNumber = 0;
-		}
-		else if(Input.IsKey2Pressed())
-		{
-			keyNumber = 1;
-		}
-		else if(Input.IsKey3Pressed())
-		{
-			keyNumber = 2;
-		}
-		
-		
-			if(MusicNoteManager.CheckNote(keyNumber))
-			{
-				if(!m_shouldPlayBackGroundSound)
-				{
-					this.PlayPerfectSound();
-				}
-				button[keyNumber].SetMissed(false);
-				MusicNoteManager.PlayButtonEffect(keyNumber);
-
-				m_score = m_score + MusicNoteManager.GetCombo();
-				
-				GameCore.SetLightning(true, MusicNoteManager.GetCombo());
-				
-				Utility.Vibrate();
-			}
-			else 
-			{
-				if(!this.shouldCheckPress)
-				{
-					if(!m_shouldPlayBackGroundSound)
-					{
-						AudioManager.SetVolume(SOUND_BG_MUSIC1, BACKGROUND_MUSIC_VOLUME_NOACTIVE);
-						AudioManager.SetVolume(SOUND_BG_MUSIC2, 1.0);
-					}
-					button[keyNumber].SetMissed(true);
-					
-					MusicNoteManager.PlayMissedEffect(keyNumber);
-					GameCore.SetLightning(false, 0);
-				}
-			}
-		//}
-	}
-	
 	this.shouldCheckPress = false;
     var currentDiskRotate = 0;
     var curerntDiskDY = 0;
 	this.Update = function(time)
 	{
-		//dede
-		if((Input.IsKey1Pressed() || Input.IsKey2Pressed() || Input.IsKey3Pressed()) && !isInTutorial)
-		{
-			this.KeyboardToMouseTranslator();
-		}
-	
 		if(isInTutorial)
 		{
-			if(Input.IsTouchDown() || Input.IsKeyEnterPressed()) // dede
+			if(Input.IsTouchDown() || Input.IsKeyEnterPressed())
 			{
 				DJ_Table.Init();
 
@@ -249,24 +191,25 @@ function DJ_Table()
 			}
 			return;
 		}
-		if(this.IsClick())
+		//console.log(Input.IsKeyEnterPressed());
+		if(this.IsClick() || Input.IsKeyEnterPressed())
         {
-			console.log('IsClick');
+        	console.log('DJ_Table IsClick (' + currentDiskRotate + ',' + this.rotate + ')');
             currentDiskRotate = this.rotate;
         }
         
-		if(this.IsPress())// && !isDiskRotating)
+		if(this.IsPress() || Input.IsKeyEnterPressed())// && !isDiskRotating)
 		{
-            console.log('IsPress');
-            if(Input.IsTouchMove())
+            console.log('DJ_Table IsPress');
+            if(Input.IsTouchMove() || Input.IsKeyEnterPressed())
             {
-				console.log('IsTouchMove');
+            	console.log('DJ_Table IsTouchMove');
                 curerntDiskDY = Input.GetDY();
             }
             this.rotate = currentDiskRotate - curerntDiskDY;
-			if (curerntDiskDY != 0)
+			if (curerntDiskDY != 0 || Input.IsKeyEnterPressed())
 			{
-				console.log('curerntDiskDY != 0');
+				console.log('DJ_Table curerntDiskDY');
 				if(MusicNoteManager.CanCheckNote())
 				{
 					//MusicNoteManager.SetCanCheckNote(false);
@@ -300,7 +243,7 @@ function DJ_Table()
 		//update button
 		for(var i=0; i < 3; i++)
 		{
-			if(button[i].IsDJButtonClick() || (this.shouldCheckPress && button[i].IsDJButtonPress()))
+			if(button[i].IsDJButtonClick(i) || (this.shouldCheckPress && button[i].IsDJButtonPress(i)))
 			{
 				if(MusicNoteManager.CheckNote(i))
 				{
@@ -399,9 +342,9 @@ function DJ_Table()
 		}
 		if(button != null)
 		{
-			button[0].Draw();
-			button[1].Draw();
-			button[2].Draw();
+			button[0].Draw(0);
+			button[1].Draw(1);
+			button[2].Draw(2);
 		}
 		this.Draw();
 		

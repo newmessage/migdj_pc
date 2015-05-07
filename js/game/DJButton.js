@@ -30,13 +30,24 @@ function DJButton(id, url, url_active, url_miss, x, y) {
         return this.loaded() && (m_loadCount == 2)
     }
 	
-	this.Draw = function() {
-		if(this.IsDJButtonPress())
+	this.Draw = function(index) {
+		if(this.IsDJButtonPress() || (Input.isPressedButtonValid(index) && !Input.isKeyUp))
 		{
 			if(isMissed)
+			{
+				console.log(index + ' missed');
 				Graphic.Draw(img_miss, this.m_x, this.m_y, this.anchor, this.rotate);
+			}
 			else
+			{
+				console.log(index + ' right');
 				Graphic.Draw(img_active, this.m_x, this.m_y, this.anchor, this.rotate);
+			}
+
+			if(Input.isPressedButtonValid(index) && !Input.isKeyUp)
+			{
+				Input.nullifykey();
+			}
 		}
 		else
 		{
@@ -49,8 +60,8 @@ function DJButton(id, url, url_active, url_miss, x, y) {
 		isMissed = value;
 	}
 	
-	this.IsDJButtonClick = function() {
-		if(Input.IsTouchDown())
+	this.IsDJButtonClick = function(i) {
+		if(Input.IsTouchDown(i))
 		{
 			var x = this.m_x;
 			var y = this.m_y;
@@ -79,8 +90,8 @@ function DJButton(id, url, url_active, url_miss, x, y) {
 		return false;
 	};
 	
-	this.IsDJButtonPress = function() {
-		if(Input.IsTouchPress())
+	this.IsDJButtonPress = function(index) {
+		if(Input.IsTouchPress(index))
 		{
 			var x = this.m_x;
 			var y = this.m_y;
