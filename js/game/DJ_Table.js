@@ -47,7 +47,7 @@ function DJ_Table()
 		this.tuto_bg.Load(TUTO_BG_LINK + HostImagePath() + "/bg/score_board.png");
 		this.tuto_bg.SetAnchor(H_CENTER|V_CENTER);
 		this.tuto_bg.SetPos(Graphic.width>>1, ScreenDefine.TUTORIAL.POSY);
-		this.tuto_bg.SetScale(2, 2);
+		this.tuto_bg.SetScale(2.2, 2.2);
 		isInTutorial = true;
         //firstTimeReward = true;
 		
