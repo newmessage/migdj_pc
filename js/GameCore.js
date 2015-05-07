@@ -100,9 +100,13 @@ function GameCore() {
                         lightning.alpha = lightning.alpha + ((Math.random()*0.03) -0.03 );
                     }
                     lightning2.alpha = lightning.alpha;
+                    lightning3.alpha = lightning2.alpha;
+                    lightning4.alpha = lightning3.alpha;
                     //lightning.alpha *= current_light_time / LIGHTNING_TIME;
                     lightning_red.alpha *= current_light_time / LIGHTNING_TIME;
                     lightning_red2.alpha = lightning_red.alpha;
+                    lightning_red3.alpha = lightning_red2.alpha;
+                    lightning_red4.alpha = lightning_red3.alpha;
                     if (USE_TEXT_COLOR)
                     {
                         if (lightning_red.alpha > 0.0)
@@ -128,8 +132,12 @@ function GameCore() {
                 {
                     lightning.alpha = 0;
                     lightning2.alpha = 0;
+                    lightning3.alpha = 0;
+                    lightning4.alpha = 0;
                     lightning_red.alpha = 0;
                     lightning_red2.alpha = 0;
+                    lightning_red3.alpha = 0;
+                    lightning_red4.alpha = 0;
                     if (USE_TEXT_COLOR)
                     {
                         DJ_Table.textColor = "#FFFFFF";
@@ -177,7 +185,7 @@ function GameCore() {
         if(!USE_OPTMZ_FOR_WEAK_DEVICE)
         {
             background = new Object();
-            background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bgPlay2.png");
+            background.Load(BACKGROUND_LINK + HostImagePath() + "/bg/bgPlay.png");
             background.SetPos(-65, 60);
             //background.SetScale(2, 2);
 			
@@ -194,6 +202,7 @@ function GameCore() {
             var posy = Graphic.RealHeight()- Graphic.GetOffsetRatio();
             if(Graphic.IsPortrait())
             {
+				console.log('masuk sini ++++ ');
                 posy = Graphic.RealWidth()- Graphic.GetOffsetRatio();
             }
             
@@ -211,9 +220,27 @@ function GameCore() {
             {
                 lightning2.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/blue_lightning.png");
             }
-            lightning2.SetPos(posy, 0);
+            lightning2.SetPos(- Graphic.GetOffsetRatio(), posy);
             lightning2.alpha = 0;
-            lightning2.SetScale(-4, 4);
+            lightning2.SetScale(4, -4);
+			
+			lightning3 = new Object();
+            if (!USE_TEXT_COLOR)
+            {
+                lightning3.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/blue_lightning.png");
+            }
+            lightning3.SetPos(posy, 0);
+            lightning3.alpha = 0;
+            lightning3.SetScale(-4, 4);
+			
+			lightning4 = new Object();
+            if (!USE_TEXT_COLOR)
+            {
+                lightning4.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/blue_lightning.png");
+            }
+            lightning4.SetPos(posy, posy);
+            lightning4.alpha = 0;
+            lightning4.SetScale(-4, -4);
 
             lightning_red = new Object();
             if (!USE_TEXT_COLOR)
@@ -229,9 +256,27 @@ function GameCore() {
             {
                 lightning_red2.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/red_lightning.png");
             }
-            lightning_red2.SetPos(posy, 0);
+            lightning_red2.SetPos(- Graphic.GetOffsetRatio(), posy);
             lightning_red2.alpha = 0;
-            lightning_red2.SetScale(-4, 4);
+            lightning_red2.SetScale(4, -4);
+			
+			lightning_red3 = new Object();
+            if (!USE_TEXT_COLOR)
+            {
+                lightning_red3.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/red_lightning.png");
+            }
+            lightning_red3.SetPos(posy, 0);
+            lightning_red3.alpha = 0;
+            lightning_red3.SetScale(-4, 4);
+			
+			lightning_red4 = new Object();
+            if (!USE_TEXT_COLOR)
+            {
+                lightning_red4.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/bg/red_lightning.png");
+            }
+            lightning_red4.SetPos(posy, posy);
+            lightning_red4.alpha = 0;
+            lightning_red4.SetScale(-4, -4);
         }
     };
     
@@ -271,6 +316,8 @@ function GameCore() {
                 {
                     lightning.Draw();
                     lightning2.Draw();
+					lightning3.Draw();
+					lightning4.Draw();
                 }
             }
             if(lightning_red != null && lightning_red.alpha > 0)
@@ -279,6 +326,8 @@ function GameCore() {
                 {
                     lightning_red.Draw();
                     lightning_red2.Draw();
+					lightning_red3.Draw();
+					lightning_red4.Draw();
                 }
             }
         }

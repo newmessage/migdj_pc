@@ -79,7 +79,7 @@ function StateEndGame()
 		{
             //Utility.log("Redirect to page: "+GetProduceLink(GAME_COUNTRY));
             try{
-                if(DEBUG)
+                if(DEVICE_INFO.OS != DEVICE_OS.ANDROID)
                 {
                     window.open(GetProduceLink(GAME_COUNTRY));
                 }

@@ -17,6 +17,8 @@ function StateLoading()
 	var loading_bg = null;
     var loading_logo = null;
 	
+	var main_bg = null;
+	
 	const NUM_DISKS = 8;
 	var loading_disk = null;
 	
@@ -29,6 +31,13 @@ function StateLoading()
         loading_bg.SetPos(Graphic.width >> 1, ScreenDefine.LOADING.BACKGROUND.POSY);
 		loading_bg.SetAnchor(H_CENTER|V_CENTER);
 		loading_bg.SetScale(2, 2);
+		
+		main_bg = new Object();
+		main_bg.Load(BACKGROUND_LINK + HostImagePath() + "/bg/Loading.jpg");
+		main_bg.SetScale(1.5, 1.5);
+		//main_bg.SetPos(Graphic.width>>1, ScreenDefine.TUTORIAL.POSY);
+		main_bg.SetPos(Graphic.width>>1, ScreenDefine.TUTORIAL.POSY+100);
+		main_bg.SetAnchor(H_CENTER|V_CENTER);
         
         loading_logo = new Object();
         loading_logo.Load(LOADING_LOGO_LINK + HostImagePath() + "/bg/dg_control_air_logo.jpg");
@@ -40,7 +49,7 @@ function StateLoading()
 		{
 			loading_disk[i] = new Object();
 			loading_disk[i].Load(LOADING_DISC_LINK + HostImagePath() + "/button/loading_disk.png");
-			loading_disk[i].SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
+			loading_disk[i].SetPos(Graphic.width, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
 			loading_disk[i].SetAnchor(H_CENTER|V_CENTER);
 			loading_disk[i].SetRotate(i*360/NUM_DISKS);
 		}
@@ -52,7 +61,7 @@ function StateLoading()
     
     this.IsLoaded = function()
     {
-        return loading_bg.IsLoaded() && loading_logo.IsLoaded();
+        return loading_bg.IsLoaded() && loading_logo.IsLoaded() && main_bg.IsLoaded();
     }
 	
 	this.Update = function(time)
@@ -133,18 +142,23 @@ function StateLoading()
 	
 	this.Draw = function() {
 
+		if(main_bg != null)
+			main_bg.Draw();
+		
+		/*	
 		if(loading_bg != null)
 			loading_bg.Draw();
         
         if(loading_logo != null)
             loading_logo.Draw();
+		*/
 		
 		for(var i=0; i < (m_step*LOAD_FINISH/NUM_DISKS); i++)
 		{
 			loading_disk[i].Draw();
 		}
 		
-		Graphic.DrawString(GetText().LOADING, Graphic.width >> 1, (Graphic.height>> 1) + ScreenDefine.LOADING.TEXT_OFFSET_Y , "#00FFFF", ScreenDefine.FONT_SIZE_MAX, H_CENTER);
+		Graphic.DrawString(GetText().LOADING, Graphic.width, (Graphic.height>> 1) + ScreenDefine.LOADING.TEXT_OFFSET_Y , "#00FFFF", ScreenDefine.FONT_SIZE_MAX, H_CENTER);
 	};
 	
 	this.DrawLoadingBar = function(percent, posx, offset_Y)

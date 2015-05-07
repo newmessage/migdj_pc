@@ -105,8 +105,8 @@ function Graphic() {
         */
         canvas.width = size.width*ScreenDefine.devicePixelRatio;
 		canvas.height = size.height*ScreenDefine.devicePixelRatio;
-        canvas.style.width = size.width+"px";
-		canvas.style.height = size.height+"px";
+        canvas.style.width = '100%';//size.width+"px";
+		canvas.style.height = '100%';//size.height+"px";
         
         
         var scale = ScreenDefine.SCALE;

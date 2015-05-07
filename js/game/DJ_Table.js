@@ -75,7 +75,7 @@ function DJ_Table()
 		this.SetAnchor(H_CENTER|V_CENTER);
 		this.SetScale(1.2, 0.9);
         
-        tutorial_text = Graphic.WrapText(GetText().TUTORIAL_TEXT, ScreenDefine.TUTORIAL.CONTENT_MAX_WIDTH, ScreenDefine.TUTORIAL.CONTENT_LINE_SPACE, ScreenDefine.FONT_SIZE_NORMAL);
+        tutorial_text = Graphic.WrapText(GetText().TUTORIAL_TEXT_DESKTOP, ScreenDefine.TUTORIAL.CONTENT_MAX_WIDTH, ScreenDefine.TUTORIAL.CONTENT_LINE_SPACE, ScreenDefine.FONT_SIZE_NORMAL);
 	};
     
     this.ChangePlayTime = function()
