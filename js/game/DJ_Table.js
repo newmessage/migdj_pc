@@ -227,8 +227,8 @@ function DJ_Table()
 					}
 					else
 					{
-						//MusicNoteManager.PlayMissedEffect(3);
-						//GameCore.SetLightning(false, 0);
+						MusicNoteManager.PlayMissedEffect(3);
+						GameCore.SetLightning(false, 0);
 					}
 				}
 				
