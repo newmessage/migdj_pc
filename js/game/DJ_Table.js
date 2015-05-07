@@ -370,7 +370,7 @@ function DJ_Table()
             //Graphic.DrawString(AudioManager.IsSupportAudioAPI()?GetText().TUTORIAL_TITLE:GetText().TUTORIAL_TITLE_40S, Graphic.width >> 1, this.tuto_bg.PosY() + ScreenDefine.TUTORIAL.TITLE_POSY , "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER);
             
             Graphic.DrawPage(tutorial_text, Graphic.width >> 1, this.tuto_bg.PosY() + ScreenDefine.TUTORIAL.CONTENT_POSY, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER);
-            Graphic.DrawString(GetText().TUTORIAL_TAP, Graphic.width >> 1, this.tuto_bg.PosY() + ScreenDefine.TUTORIAL.TOUCH_THE_SCREEN_POSY , "#00FFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER);
+            Graphic.DrawString(GetText().TUTORIAL_TAP_DESKTOP, Graphic.width >> 1, this.tuto_bg.PosY() + ScreenDefine.TUTORIAL.TOUCH_THE_SCREEN_POSY , "#00FFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER);
 		}
 		
 		
@@ -396,8 +396,8 @@ function DJ_Table()
         }
         else 
         {
-			Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX + 220, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, LEFT, LEFT);
-			Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX + 350, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, LEFT);
+			Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
+			Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, V_CENTER);
         }
 	};
 	
