@@ -29,7 +29,7 @@ function StateEndGame()
 		
 		end_bg_text = new Object();
 		// end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg_text_"+GAME_COUNTRY.language+".jpg");
-		end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/BlackBox.jpg");
+		// end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/BlackBox.jpg");
 		end_bg_text.SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.END_GAME.BG_OFFSET_Y + ScreenDefine.END_GAME.BG_TEXT_OFFSET_Y);
 		end_bg_text.SetAnchor(H_CENTER|V_CENTER);
 		end_bg_text.SetScale(3, 3);
