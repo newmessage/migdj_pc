@@ -29,10 +29,10 @@ function StateEndGame()
 		
 		end_bg_text = new Object();
 		// end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg_text_"+GAME_COUNTRY.language+".jpg");
-		end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg.jpg");
+		end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/BlackBox.jpg");
 		end_bg_text.SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.END_GAME.BG_OFFSET_Y + ScreenDefine.END_GAME.BG_TEXT_OFFSET_Y);
 		end_bg_text.SetAnchor(H_CENTER|V_CENTER);
-		end_bg_text.SetScale(1.5, 1.5);
+		end_bg_text.SetScale(3, 3);
 		
 		end_bg = new Object();
 		// end_bg.Load(END_BG_LINK + HostImagePath() + "/bg/end_bg_notext.jpg");
@@ -72,6 +72,7 @@ function StateEndGame()
 		{
 			DJ_Table.Init();
 			MusicNoteManager.Init();
+			DJ_Table.LoadData();
 			GameCore.ChangeState(GAME_STATE_PLAY);
 			m_isEndGame = false;
 			m_bGotReward = true;
@@ -101,9 +102,12 @@ function StateEndGame()
 	this.End_Draw = function() {
 		
 		Graphic.FillTransparent(0.7);
+		// if(end_bg_text != null)
+			// end_bg_text.Draw();
+			
 		if(end_bg != null)
 			end_bg.Draw();
-		
+			
 		// if(end_bg_text != null)
 			// end_bg_text.Draw();
 		

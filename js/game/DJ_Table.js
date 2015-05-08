@@ -298,6 +298,7 @@ function DJ_Table()
 			AudioManager.Stop(SOUND_BG_MUSIC2);
 			isInEndGame = true;
 			GameCore.ResetLight();
+			this.DJ_Unload(); // unload DJ TAble
 			GameCore.ChangeState(GAME_STATE_GAMEOVER);
             if (this.firstTimeReward)
             {
@@ -420,6 +421,20 @@ function DJ_Table()
 	this.IsInTutorial = function ()
 	{
 		return isInTutorial;
+	}
+	
+	//unload data
+	this.DJ_Unload = function() {
+		// tuto_bg.Unload();
+		// tuto_bg = null;
+		
+		dg_bg.Unload();
+		dg_bg = null;
+		
+		dj_disk.Unload();
+		dj_disk = null;
+		
+		this.Unload();
 	}
 }
 
