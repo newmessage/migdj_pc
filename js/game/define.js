@@ -121,6 +121,7 @@ var PRODUCT_LINK=[
 var TEXT={
     EN: {
             GREAT_SCORE:                ' POINTS, GREAT SCORE!',
+            TRY_AGAIN_SCORE:                " POINTS, YOU'RE SO NOOB, PLEASE TRY AGAIN!",
             YOU_JUST_WON:               'You just won a reward',
             TUTORIAL_TAP:               'Tap to continue',
             TUTORIAL_TAP_DESKTOP:       'Tap / Press Enter to continue',

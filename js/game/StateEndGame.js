@@ -117,7 +117,14 @@ function StateEndGame()
 		if(button_getit != null)
 			button_getit.Draw();
 		
-		Graphic.DrawString(DJ_Table.GetScore()+GetText().GREAT_SCORE, Graphic.width >> 1, ScreenDefine.END_GAME.SCORE_Y, "#00FFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER|V_CENTER);
+		if(DJ_Table.GetScore() == 0)
+		{
+			Graphic.DrawString(DJ_Table.GetScore()+GetText().TRY_AGAIN_SCORE, Graphic.width >> 1, ScreenDefine.END_GAME.SCORE_Y, "#00FFFF", ScreenDefine.FONT_SIZE_MAX, H_CENTER|V_CENTER);
+		}
+		else
+		{
+			Graphic.DrawString(DJ_Table.GetScore()+GetText().GREAT_SCORE, Graphic.width >> 1, ScreenDefine.END_GAME.SCORE_Y, "#00FFFF", ScreenDefine.FONT_SIZE_MAX, H_CENTER|V_CENTER);
+		}
 		
 		//if(!m_unknown_country)
 		//{
