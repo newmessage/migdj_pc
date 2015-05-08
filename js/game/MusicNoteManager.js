@@ -3,7 +3,7 @@
  */
 function MusicNoteManager()
 {
-	var MAX_NOTE			= 20;
+	var MAX_NOTE			= 25;
 	const NOTE_SCALE_OFFSET	= 0.025;
 	const GLOW_TIME_MAX 	= 300;
 	const RED_TIME_MAX 		= 300;
