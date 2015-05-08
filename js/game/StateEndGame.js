@@ -28,16 +28,18 @@ function StateEndGame()
 		button_getit.SetAnchor(H_CENTER|V_CENTER);
 		
 		end_bg_text = new Object();
-		end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg_text_"+GAME_COUNTRY.language+".jpg");
+		// end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg_text_"+GAME_COUNTRY.language+".jpg");
+		end_bg_text.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg.jpg");
 		end_bg_text.SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.END_GAME.BG_OFFSET_Y + ScreenDefine.END_GAME.BG_TEXT_OFFSET_Y);
 		end_bg_text.SetAnchor(H_CENTER|V_CENTER);
-		end_bg_text.SetScale(2, 2);
+		end_bg_text.SetScale(1.5, 1.5);
 		
 		end_bg = new Object();
-		end_bg.Load(END_BG_LINK + HostImagePath() + "/bg/end_bg_notext.jpg");
+		// end_bg.Load(END_BG_LINK + HostImagePath() + "/bg/end_bg_notext.jpg");
+		end_bg.Load(END_BG_TEXT_LINK + HostImagePath() + "/bg/end_bg.jpg");
 		end_bg.SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.END_GAME.BG_OFFSET_Y);
 		end_bg.SetAnchor(H_CENTER|V_CENTER);
-		end_bg.SetScale(2, 2);
+		end_bg.SetScale(1, 1);
 		
 		end_bg_promo = new Object();
 		end_bg_promo.Load(END_BG_PROMO_LINK + HostImagePath() + "/bg/promo_banner.png");
@@ -102,8 +104,8 @@ function StateEndGame()
 		if(end_bg != null)
 			end_bg.Draw();
 		
-		if(end_bg_text != null)
-			end_bg_text.Draw();
+		// if(end_bg_text != null)
+			// end_bg_text.Draw();
 		
 		if(button_retry != null)
 			button_retry.Draw();
@@ -113,13 +115,20 @@ function StateEndGame()
 		
 		Graphic.DrawString(DJ_Table.GetScore()+GetText().GREAT_SCORE, Graphic.width >> 1, ScreenDefine.END_GAME.SCORE_Y, "#00FFFF", ScreenDefine.FONT_SIZE_NORMAL, H_CENTER|V_CENTER);
 		
-		if(!m_unknown_country)
-		{
-			if(end_bg_promo != null)
-				end_bg_promo.Draw();
-			Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_1, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT, V_CENTER);
-			Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_2, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT_SMALL, V_CENTER);
-		}
+		//if(!m_unknown_country)
+		//{
+		// if(end_bg_promo != null)
+			// end_bg_promo.Draw();
+		
+		//using text for hardcoded img text
+		Graphic.DrawString(GetText().END_SCREEN_NATURAL_DJ, (Graphic.width >> 1) - ScreenDefine.END_GAME.NATURAL_DJ_TEXT_X, ScreenDefine.END_GAME.NATURAL_DJ_TEXT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y + 200, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, V_CENTER); // you're a natural born dj
+		
+		Graphic.DrawString(GetText().END_SCREEN_NOW_GET, (Graphic.width >> 1) - (ScreenDefine.END_GAME.NOW_GET_REAL_X * 2), ScreenDefine.END_GAME.NOW_GET_REAL_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y + 100, "#FFFFFF", ScreenDefine.FONT_SIZE_END, V_CENTER); // now get the real deal!
+		//using text for hardcoded img text -  END
+		
+		Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_1, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT, V_CENTER);
+		Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_2, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT_SMALL, V_CENTER);
+		//}
 		
 		//m4verick - Remove reward in game
 		/*

@@ -131,6 +131,8 @@ var TEXT={
             LOADING:                    'LOADING...',
             END_SCREEN_DISCOUNT_1:      '10% DISCOUNT',
             END_SCREEN_DISCOUNT_2:      'USING PROMO CODE AIRMIX',
+            END_SCREEN_NATURAL_DJ:      "YOU'RE A NATURAL BORN DJ",
+            END_SCREEN_NOW_GET:      	'NOW GET THE REAL DEAL !',
             SPLASH_TEXT_PLAY:           'Play a quick DJ mini game and',
             SPLASH_TEXT_GET:            'GET A REWARD',
             SPLASH_TEXT_PLAY_NO_REWARD:  'Play a quick',
