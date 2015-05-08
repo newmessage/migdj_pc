@@ -13,22 +13,32 @@ function Object() {
 	this.m_id = -1;
 	//private
 	this.img = null;
+	this.img_pressed = null;
 	var m_x = 0;
 	var m_y = 0;
     
     var m_loaded = false;
     
+    this.isButtonPressed = false;
 	
-	this.Load = function(url)
+	this.Load = function(url_default, url_pressed)
 	{
 		this.img = new Image();
         this.img.onload = loaded;
-		this.img.src = url;
+		this.img.src = url_default;
+
+		if(url_pressed != null)
+		{
+			this.img_pressed = new Image();
+	        this.img_pressed.onload = loaded;
+			this.img_pressed.src = url_pressed;
+		}
 	};
     
     this.Unload = function()
     {
         this.img = null;
+        this.url_pressed = null;
     }
     
     this.SetImage = function(image)
@@ -48,8 +58,19 @@ function Object() {
     }
 	
 	this.Draw = function() {
-		if(this.img != null)
+		//console.log(this.IsClick());
+		//if(this.img != null)
+		//	Graphic.Draw(this.img, this.m_x, this.m_y, this.anchor, this.rotate, this.scaleX, this.scaleY, this.alpha, this.autoAlign);
+		if(this.img_pressed != null && (Input.IsKeyEnterPressed() || this.IsPress()))
+		{
+			Graphic.Draw(this.img_pressed, this.m_x, this.m_y, this.anchor, this.rotate, this.scaleX, this.scaleY, this.alpha, this.autoAlign);
+			this.isButtonPressed = true;
+		}
+		else
+		{
 			Graphic.Draw(this.img, this.m_x, this.m_y, this.anchor, this.rotate, this.scaleX, this.scaleY, this.alpha, this.autoAlign);
+			this.isButtonPressed = false;
+		}
 	};
 	
 	this.Update = function()
@@ -86,6 +107,7 @@ function Object() {
 	this.IsClick = function() {
 		if(Input.IsTouchDown())
 		{
+			console.log('Object IsClick');
 			var x = this.m_x;
 			var y = this.m_y;
 			if((this.anchor & H_CENTER) != 0)

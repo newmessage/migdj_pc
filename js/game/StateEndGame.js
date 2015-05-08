@@ -21,10 +21,10 @@ function StateEndGame()
 	
 	this.LoadData = function() {
 		
-		button_retry = new Button(BTN_RETRY_LINK + HostImagePath() + "/button/button_retry.png", "", ScreenDefine.END_GAME.RETRY_BUTTON_OFFSET_X, Graphic.height + ScreenDefine.END_GAME.RETRY_BUTTON_OFFSET_Y);
+		button_retry = new Button(BTN_RETRY_LINK + HostImagePath() + "/button/button_retry.png", BTN_RETRY_LINK + HostImagePath() + "/button/button_retry_pressed.png", ScreenDefine.END_GAME.RETRY_BUTTON_OFFSET_X, Graphic.height + ScreenDefine.END_GAME.RETRY_BUTTON_OFFSET_Y);
 		button_retry.SetAnchor(H_CENTER|V_CENTER);
 		
-		button_getit = new Button(BTN_GETIT_LINK + HostImagePath() + "/button/button_getit_"+GAME_COUNTRY.language+".png", "", Graphic.width + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_X, Graphic.height + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_Y);
+		button_getit = new Button(BTN_GETIT_LINK + HostImagePath() + "/button/button_getit_"+GAME_COUNTRY.language+".png", BTN_GETIT_LINK + HostImagePath() + "/button/button_getit_pressed_"+GAME_COUNTRY.language+".png", Graphic.width + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_X, Graphic.height + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_Y);
 		button_getit.SetAnchor(H_CENTER|V_CENTER);
 		
 		end_bg_text = new Object();

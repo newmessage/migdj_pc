@@ -70,6 +70,10 @@ function Input()
 		return isKeyEnterPressed;
 	}
 
+	this.IsKeyUp = function()
+	{
+		return isKeyUp;
+	}
 
 	this.setKeyPressed = function(e)
 	{

@@ -20,7 +20,7 @@ function StatePreLoad()
 		//splash.SetRotate(90); //realign in splash menu
 		
 		splash_button = new Object();
-		splash_button.Load(SPLASH_BTN_LINK + HostImagePath() + "/bg/splash_btn_"+ GAME_COUNTRY.language +".jpg");
+		splash_button.Load(SPLASH_BTN_LINK + HostImagePath() + "/bg/splash_btn_"+ GAME_COUNTRY.language +".jpg", SPLASH_BTN_LINK + HostImagePath() + "/bg/splash_btn_pressed_"+ GAME_COUNTRY.language +".png");
         splash_button.SetPos(Graphic.width >> 1, Graphic.height >> 1);
 		splash_button.SetAnchor(H_CENTER|V_CENTER);
 		splash_button.SetPos((Graphic.height >> 1) + ScreenDefine.SPLASH.BUTTON_OFFSET_X, (Graphic.height >> 0.5) - ScreenDefine.SPLASH.BUTTON_OFFSET_Y);
@@ -49,7 +49,8 @@ function StatePreLoad()
 	this.Update = function(time)
 	{
         //check when loading screen data is already
-        if(Input.IsTouchDown() || Input.IsKeyEnterPressed())
+        //if(Input.IsTouchDown() || Input.IsKeyEnterPressed())
+        if(splash_button.isButtonPressed && (Input.IsTouchUp() || Input.IsKeyUp()))
         {
         	// area_id = 11699; //(_os=='ANDROID') ? 11699 : 11701;
 
