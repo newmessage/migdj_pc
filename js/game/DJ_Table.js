@@ -396,7 +396,17 @@ function DJ_Table()
         }
         else 
         {
-			Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
+			//use 2 digit in time - m4verick
+			var timeTemp = Math.floor(m_playerTimeCounter/1000);
+			if(timeTemp < 10)
+			{
+				Graphic.DrawString("0" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
+			}
+			else
+			{
+				Graphic.DrawString("" + Math.floor(m_playerTimeCounter/1000), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_SEC , "#FFFFFF", ScreenDefine.FONT_SIZE_TIME, RIGHT, V_CENTER);
+			}
+			//use 2 digit in time - m4verick - END
 			Graphic.DrawString(" : " + Math.round(((Math.round(m_playerTimeCounter/10)/100)%1) * 100), Graphic.width - ScreenDefine.DJ_TABLE.TIME.POSX, ScreenDefine.DJ_TABLE.TIME.POSY_MILISEC, "#FFFFFF", ScreenDefine.FONT_SIZE_NORMAL, LEFT, V_CENTER);
         }
 	};
