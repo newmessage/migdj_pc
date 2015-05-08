@@ -23,7 +23,8 @@ function StatePreLoad()
 		splash_button.Load(SPLASH_BTN_LINK + HostImagePath() + "/bg/splash_btn_"+ GAME_COUNTRY.language +".jpg");
         splash_button.SetPos(Graphic.width >> 1, Graphic.height >> 1);
 		splash_button.SetAnchor(H_CENTER|V_CENTER);
-		splash_button.SetPos(ScreenDefine.SPLASH.BUTTON_OFFSET_X, (Graphic.height >> 1) + ScreenDefine.SPLASH.BUTTON_OFFSET_Y);
+		splash_button.SetPos((Graphic.height >> 1) + ScreenDefine.SPLASH.BUTTON_OFFSET_X, (Graphic.height >> 0.5) - ScreenDefine.SPLASH.BUTTON_OFFSET_Y);
+		splash_button.SetScale(1.3, 1.3);
 		//splash_button.SetRotate(90);
 		
 		currency_icon = new Object();
