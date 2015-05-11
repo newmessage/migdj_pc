@@ -17,6 +17,8 @@ function StateEndGame()
 	
 	var ofs = 0;
 	
+	var BLINK_MAX = false;
+	
 	var currency_icon	= null;
 	
 	var m_isEndGame = false;
@@ -90,22 +92,27 @@ function StateEndGame()
 		}
 		
 		//window.setInterval(function(){
-			if(ofs < 1.0)
-			{
-				console.log("ofs true: "+ofs);
-				ofs += 0.04;
-			}
-			else 
-			{
-				console.log("ofs false: "+ofs);
-				ofs = 0;
-			}
-				
-			blue_lightning.alpha = ofs;//Math.abs(Math.sin(ofs));
-			console.log("test2");
-			//ofs += 0.01;
-			//button.getit.Draw();
-		//},10);
+		if(BLINK_MAX == false)
+		{
+			ofs += 0.05;
+			blue_lightning.alpha = ofs;
+		}
+		
+		if(ofs > 0.9)
+		{
+			BLINK_MAX = true;
+		}
+		
+		if(BLINK_MAX == true)
+		{
+			ofs -= 0.05;
+			blue_lightning.alpha = ofs;
+		}
+		
+		if(ofs < 0.1)
+		{
+			BLINK_MAX = false;
+		}
 		
 		if(button_getit.IsRelease())
 		{

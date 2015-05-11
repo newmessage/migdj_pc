@@ -47,7 +47,7 @@ function StateLoading()
         loading_disk = new Object();
         loading_disk.Load(LOADING_DISC_LINK + HostImagePath() + "/button/disk.png");
         loading_disk.SetPos(Graphic.width, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
-        //loading_disk.SetScale(0.5,0.5);
+        loading_disk.SetScale(0.7,0.7);
         loading_disk.SetAnchor(H_CENTER|V_CENTER);
         loading_disk.SetRotate(360/NUM_DISKS);
 
