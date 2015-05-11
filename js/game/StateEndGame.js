@@ -98,7 +98,7 @@ function StateEndGame()
 			blue_lightning.alpha = ofs;
 		}
 		
-		if(ofs > 0.9)
+		if(ofs > 1.0)
 		{
 			BLINK_MAX = true;
 		}
