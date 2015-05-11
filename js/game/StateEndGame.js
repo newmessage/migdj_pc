@@ -180,6 +180,7 @@ function StateEndGame()
 		
 		Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_1, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT, V_CENTER);
 		Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_2, ScreenDefine.END_GAME.DISCOUNT_X, ScreenDefine.END_GAME.DISCOUNT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y, "#FFFFFF", ScreenDefine.FONT_SIZE_DISCOUNT_SMALL, V_CENTER);
+		Graphic.DrawString(GetText().END_SCREEN_DISCOUNT_3, ScreenDefine.END_GAME.DISCOUNT_X + 238, ScreenDefine.END_GAME.DISCOUNT_Y + ScreenDefine.END_GAME.DISCOUNT_OFFSET_Y, "#FF0000", ScreenDefine.FONT_SIZE_DISCOUNT_SMALL, V_CENTER);
 		//}
 		
 		//m4verick - Remove reward in game
