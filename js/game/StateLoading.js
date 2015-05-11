@@ -44,15 +44,24 @@ function StateLoading()
         loading_logo.SetPos(Graphic.width >> 1, ScreenDefine.LOADING.BACKGROUND.LOGOY);
 		loading_logo.SetAnchor(H_CENTER|V_CENTER);
 		
-		loading_disk = [];
-		for(var i=0; i < NUM_DISKS; i++)
-		{
-			loading_disk[i] = new Object();
-			loading_disk[i].Load(LOADING_DISC_LINK + HostImagePath() + "/button/loading_disk.png");
-			loading_disk[i].SetPos(Graphic.width, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
-			loading_disk[i].SetAnchor(H_CENTER|V_CENTER);
-			loading_disk[i].SetRotate(i*360/NUM_DISKS);
-		}
+        loading_disk = new Object();
+        loading_disk.Load(LOADING_DISC_LINK + HostImagePath() + "/button/disk.png");
+        loading_disk.SetPos(Graphic.width, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
+        //loading_disk.SetScale(0.5,0.5);
+        loading_disk.SetAnchor(H_CENTER|V_CENTER);
+        loading_disk.SetRotate(360/NUM_DISKS);
+
+		// loading_disk = [];
+		// for(var i=0; i < NUM_DISKS; i++)
+		// {
+		// 	loading_disk[i] = new Object();
+		// 	loading_disk[i].Load(LOADING_DISC_LINK + HostImagePath() + "/button/disk.png");
+		// 	loading_disk[i].SetPos(Graphic.width, (Graphic.height>>1) + ScreenDefine.LOADING.BG_OFFSET_Y);
+		// 	loading_disk[i].SetAnchor(H_CENTER|V_CENTER);
+		// 	loading_disk[i].SetRotate(i*360/NUM_DISKS);
+		// }
+
+        
 	};
 	
 	this.Init = function() {
@@ -63,6 +72,8 @@ function StateLoading()
     {
         return loading_bg.IsLoaded() && loading_logo.IsLoaded() && main_bg.IsLoaded();
     }
+
+    var spinning_disk_speed = 0;
 	
 	this.Update = function(time)
 	{
@@ -137,6 +148,8 @@ function StateLoading()
         
         //Utility.log("Current loading step: "+m_step);
         //SetLog("Current loading step: "+m_step);
+        spinning_disk_speed+=20;
+        loading_disk.SetRotate(spinning_disk_speed);
         
 	};
 	
@@ -153,9 +166,10 @@ function StateLoading()
             loading_logo.Draw();
 		*/
 		
-		for(var i=0; i < (m_step*LOAD_FINISH/NUM_DISKS); i++)
+		//for(var i=0; i < (m_step*LOAD_FINISH/NUM_DISKS); i++)
 		{
-			loading_disk[i].Draw();
+			//loading_disk[i].Draw();
+            loading_disk.Draw();
 		}
 		
 		Graphic.DrawString(GetText().LOADING, Graphic.width, (Graphic.height>> 1) + ScreenDefine.LOADING.TEXT_OFFSET_Y , "#00FFFF", ScreenDefine.FONT_SIZE_MAX, H_CENTER);
