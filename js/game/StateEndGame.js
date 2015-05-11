@@ -13,6 +13,10 @@ function StateEndGame()
 	var button_retry	= null;
 	var button_getit	= null;
 	
+	var blue_lightning 	= null;
+	
+	var ofs = 0;
+	
 	var currency_icon	= null;
 	
 	var m_isEndGame = false;
@@ -33,6 +37,13 @@ function StateEndGame()
 		end_bg_text.SetPos(Graphic.width>>1, (Graphic.height>>1) + ScreenDefine.END_GAME.BG_OFFSET_Y + ScreenDefine.END_GAME.BG_TEXT_OFFSET_Y);
 		end_bg_text.SetAnchor(H_CENTER|V_CENTER);
 		end_bg_text.SetScale(3, 3);
+		
+		blue_lightning = new Object();
+        blue_lightning.Load(LIGHT_EFFECT_LINK + HostImagePath() + "/button/button_glow_end.png");
+        blue_lightning.SetPos(Graphic.width + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_X, Graphic.height + ScreenDefine.END_GAME.GETIT_BUTTON_OFFSET_Y);
+        blue_lightning.alpha = 0;
+		blue_lightning.SetAnchor(H_CENTER|V_CENTER);
+        //blue_lightning.SetScale(4, 4);
 		
 		end_bg = new Object();
 		// end_bg.Load(END_BG_LINK + HostImagePath() + "/bg/end_bg_notext.jpg");
@@ -78,6 +89,24 @@ function StateEndGame()
 			m_bGotReward = true;
 		}
 		
+		//window.setInterval(function(){
+			if(ofs < 1.0)
+			{
+				console.log("ofs true: "+ofs);
+				ofs += 0.04;
+			}
+			else 
+			{
+				console.log("ofs false: "+ofs);
+				ofs = 0;
+			}
+				
+			blue_lightning.alpha = ofs;//Math.abs(Math.sin(ofs));
+			console.log("test2");
+			//ofs += 0.01;
+			//button.getit.Draw();
+		//},10);
+		
 		if(button_getit.IsRelease())
 		{
             //Utility.log("Redirect to page: "+GetProduceLink(GAME_COUNTRY));
@@ -96,6 +125,8 @@ function StateEndGame()
             }
 		}
 		
+		
+		
         //TopBar.Update();
 	};
 	
@@ -113,6 +144,9 @@ function StateEndGame()
 		
 		if(button_retry != null)
 			button_retry.Draw();
+			
+		if(blue_lightning != null)
+			blue_lightning.Draw();
 			
 		if(button_getit != null)
 			button_getit.Draw();
