@@ -302,6 +302,45 @@ function Graphic() {
 		ctx.restore();
 		
 	};
+	
+	this.DrawStringStroke = function(string, x, y, color, size, anchor, autoAlign, is90, strokeStyle, lineW) {
+		if(typeof anchor == "undefined")anchor = NONE;
+		if(typeof autoAlign == "undefined")autoAlign = NONE;
+		if(typeof is90 == "undefined") is90 = false;
+		if(typeof strokeStyle == "undefined") strokeStyle = '#000000';
+		if(typeof lineW == "undefined") lineW = 0;
+		
+		if(m_last_size != size)
+        {
+            ctx.font = size+'px "'+m_font+'"';
+			ctx.strokeStyle = strokeStyle;
+			ctx.lineWidth = lineW;
+            m_last_size = size;
+        }
+		
+		ctx.save();
+        x += m_offsetRatio;
+		ctx.fillStyle = color;
+
+		if((autoAlign & LEFT) != 0)
+			x -= m_offsetRatio;
+		if((autoAlign & RIGHT) != 0)
+			x += m_offsetRatio;
+        
+		if((anchor & H_CENTER) != 0)
+			x -= (ctx.measureText(string).width >> 1);
+		if((anchor & RIGHT) != 0)
+			x -= ctx.measureText(string).width;
+		
+		var angleInRad = (is90 ? 90 : 0) * Math.PI / 180;
+		ctx.translate(x, y);
+		ctx.rotate(angleInRad);
+		ctx.strokeText(string, 0, 0);
+		ctx.fillText(string, 0, 0);
+		
+		ctx.restore();
+		
+	};
     
     this.WrapText = function(text, maxWidth, lineHeight, font_size) 
     {
