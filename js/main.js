@@ -23,7 +23,7 @@ function Init()
     //window.onfocus = PageShow;
     
     //window.onblur = PageHide;
-	
+	console.log("Initialize app!")
 	//init graphic
 	Graphic.Init(false);
 	

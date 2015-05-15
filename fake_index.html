@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Gameloft</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/normalize.css" media="all"/>
+<link rel="stylesheet" href="css/style_fake.css" media="all"/>
+<!--[if lt IE 9]> <script src="js/css3-mediaqueries.js"></script> <![endif]-->
+<script src="js/html5.js"></script>
+<script src="js/lib/modernizr-2.6.2.min.js"></script>
+
+</head>
+<body class="hide">	
+<div class="preloader"><div class="spinner"><span class="s-dot s-dot1"></span><span class="s-dot s-dot2"></span></div></div>
+<section id="main-container">
+	<header>
+		<div class="header">
+			<div class="auto">
+				<div class="logo"><img src="logo.png" width="200" height="auto" alt="" title=""/></div>
+			</div>
+		</div>
+	</header>
+	<section id="main-wrapper">
+		<div class="auto">
+			<div class="frame-holder">
+				<!-- <iframe id="airdj" src="http://201205igp.gameloft.com/ads/adserver/web/fullscreen/templates/minigame/airdj/index.html" width="700" height="510" frameborder="0"></iframe> -->
+
+				<!--<iframe id="airdj" src="http://localhost:880/djair_ads/release/index.html" width="700" height="510" frameborder="0"></iframe> -->
+
+				<iframe id="airdj" src="http://localhost:880/djair_ads/release/index.html" width="750" height="548"   frameborder="0" scrolling="no"></iframe>
+			</div>
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac est id justo rhoncus accumsan. In nibh magna, sollicitudin ac volutpat a, pellentesque quis eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis auctor massa lectus, volutpat eleifend ligula egestas eget. Nulla nec turpis sagittis, tincidunt risus nec, pharetra nisi. Integer nisl nisl, semper sit amet eros sit amet, mollis luctus mauris. Donec mi lectus, hendrerit a lectus hendrerit, imperdiet dictum sem. Cras eu justo scelerisque, egestas nisl non, aliquet erat. Vestibulum id dignissim nisl. Phasellus et diam orci. Quisque dignissim metus felis. Sed aliquam sagittis porta.</p>
+			</div>
+		</div>
+	</section>
+</section>
+<footer>
+	<div class="footer">
+		<p>© 2002 - 2015 Gameloft. All rights reserved. Gameloft and the Gameloft logo are trademarks of Gameloft in the U.S. and/or other countries. All other trademarks are the property of their respective owners.</p>
+	</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/custom.js"></script>
+<script type="text/javascript">
+	function keyEvent(){
+		$('#airdj').focus();
+		$(document).on('keydown keyup keypress');
+		document.getElementById('airdj').contentWindow.document.body.addEventListener('keypress');
+	}
+	
+	$(window).load(function(){
+		keyEvent();
+	});
+	$(document).ready(function(){
+		keyEvent();
+	});
+	
+</script>
+</body>
+</html>

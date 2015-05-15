@@ -1,9 +1,10 @@
 body {
-    background: #000000; 
+    /*background: #000000; */
     text-align: center;
 }
 
 a:hover {
+    text-decoration: none;
     text-decoration: none;
 }
 
@@ -181,3 +182,4 @@ a:hover {
     cursor:pointer;
     border: none;
 }
+

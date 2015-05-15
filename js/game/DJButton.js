@@ -19,7 +19,7 @@ function DJButton(id, url, url_active, url_miss, x, y) {
 	
 	this.Load(url);
 	this.SetPos(x, y);
-    
+	
     function load()
     {
         m_loadCount++;

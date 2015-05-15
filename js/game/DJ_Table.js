@@ -55,7 +55,12 @@ function DJ_Table()
 		button = [];
 		for(var i=0; i < 3; i++)
 		{
-			button[i] = new DJButton(i, DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+".png", DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+"_active.png", DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+"_miss.png", ScreenDefine.DJ_TABLE.BUTTON.POSX[i], ScreenDefine.DJ_TABLE.BUTTON.POSY[i]);
+			button[i] = new DJButton(i, 
+				DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+".png", 
+				DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+"_active.png", 
+				DJ_BTN_LINK + HostImagePath() + "/button/button"+(i+1)+"_miss.png", 
+				ScreenDefine.DJ_TABLE.BUTTON.POSX[i], 
+				ScreenDefine.DJ_TABLE.BUTTON.POSY[i]);
 			button[i].SetAnchor(H_CENTER|V_CENTER);
 		}
 		
